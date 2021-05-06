@@ -1,4 +1,8 @@
+from typing import List, Union
 from urllib.parse import parse_qs, urlencode
+
+
+qs_value = Union[str, List[str]]
 
 
 class Query:
@@ -12,3 +16,27 @@ class Query:
 
     def __bool__(self) -> bool:
         return bool(self._data)
+
+    def add(self, **kwargs: qs_value) -> None:
+        for key, value in kwargs.items():
+            self._data.setdefault(key, [])
+            if isinstance(value, list):
+                self._data[key].extend(value)
+            else:
+                self._data[key].append(value)
+
+    def set(self, **kwargs: qs_value) -> None:  # noqa: A003
+        for key, value in kwargs.items():
+            self._data.setdefault(key, [])
+            if isinstance(value, list):
+                self._data[key] = value
+            else:
+                self._data[key] = [value]
+
+    def replace(self, key: str, old_value: str, new_value: str) -> None:
+        for i, value in enumerate(self._data.get(key, [])):
+            if value == old_value:
+                self._data[key][i] = new_value
+
+    def remove(self, key: str) -> None:
+        del self._data[key]
