@@ -5,7 +5,7 @@ class Query:
     __slots__ = ["_data"]
 
     def __init__(self, query_string: str = ""):
-        self._data = parse_qs(query_string)
+        self._data = parse_qs(query_string, keep_blank_values=True)
 
     def __str__(self) -> str:
         return urlencode(self._data, doseq=True)
