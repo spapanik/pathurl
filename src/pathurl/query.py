@@ -1,7 +1,6 @@
 from typing import List, Union
 from urllib.parse import parse_qs, urlencode
 
-
 qs_value = Union[str, List[str]]
 
 
