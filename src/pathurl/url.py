@@ -60,6 +60,9 @@ class URL:
             parts.append(f"#{self.fragment}")
         return "".join(parts)
 
+    def __repr__(self):
+        return f"URL('{self}')"
+
     @staticmethod
     def _infer_port(scheme: str) -> int:
         try:

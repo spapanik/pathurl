@@ -10,6 +10,9 @@ class Path:
     def __str__(self):
         return self._path
 
+    def __repr__(self):
+        return f"Path('{self}')"
+
     @property
     def is_absolute(self) -> bool:
         return not self._path or self._path.startswith("/")

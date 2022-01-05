@@ -13,6 +13,9 @@ class Query:
     def __str__(self) -> str:
         return urlencode(self._data, doseq=True)
 
+    def __repr__(self):
+        return f"Query('{self}')"
+
     def __bool__(self) -> bool:
         return bool(self._data)
 
