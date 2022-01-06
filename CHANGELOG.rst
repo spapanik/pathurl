@@ -9,6 +9,9 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 `Unreleased`_
 -------------
 
+`0.3.0`_ - 2022-01-05
+---------------------
+
 Added
 ^^^^^
 * URL has from_string as an alias to parse, to create new URLs
@@ -42,7 +45,8 @@ Added
 * Added a class for a URL
 
 
-.. _`unreleased`: https://github.com/spapanik/pathurl/compare/v0.2.0...main
+.. _`unreleased`: https://github.com/spapanik/pathurl/compare/v0.3.0...main
+.. _`0.3.0`: https://github.com/spapanik/pathurl/compare/v0.1.0...0.3.0
 .. _`0.2.0`: https://github.com/spapanik/pathurl/compare/v0.1.0...0.2.0
 .. _`0.1.0`: https://github.com/spapanik/pathurl/releases/tag/v0.1.0
 
