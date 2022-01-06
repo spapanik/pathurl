@@ -12,6 +12,7 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 Added
 ^^^^^
 * URL has from_string as an alias to parse, to create new URLs
+* Allow joining paths, and URLs with paths
 
 Changed
 ^^^^^

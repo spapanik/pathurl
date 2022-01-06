@@ -1,4 +1,5 @@
-from urllib.parse import urlparse
+from typing import Union
+from urllib.parse import urljoin, urlparse
 
 from pathurl.constants import Port
 from pathurl.path import Path
@@ -75,6 +76,9 @@ class URL:
             return None
 
         return port.value
+
+    def join(self, path: Union[str, Path]) -> "URL":
+        return self.__class__.from_string(urljoin(str(self), str(path)))
 
     @classmethod
     def parse(cls, url: str) -> "URL":

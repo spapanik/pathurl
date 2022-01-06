@@ -1,4 +1,5 @@
-from typing import List
+from typing import List, Union
+from urllib.parse import urljoin
 
 
 class Path:
@@ -23,3 +24,6 @@ class Path:
         if self.is_absolute:
             return split[1:]
         return split
+
+    def join(self, path: Union[str, "Path"]) -> "Path":
+        return self.__class__(urljoin(self._path, str(path)))
