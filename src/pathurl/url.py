@@ -28,7 +28,6 @@ class URL:
         hostname: str = None,
         port: int = None,
         path: str = "",
-        params: str = "",
         query: str = "",
         fragment: str = "",
     ):
@@ -38,7 +37,6 @@ class URL:
         self.password = password
         self.port = port or self._infer_port(self.scheme)
         self.path = Path(path)
-        self.params = params
         self.query = Query(query)
         self.fragment = fragment
 
@@ -57,8 +55,6 @@ class URL:
         if self.port and self.port != self._infer_port(self.scheme):
             parts.append(f":{self.port}")
         parts.append(str(self.path))
-        if self.params:
-            parts.append(f";{self.params}")
         if self.query:
             parts.append(f"?{self.query}")
         if self.fragment:
@@ -90,7 +86,6 @@ class URL:
             hostname=parsed_url.hostname,
             port=parsed_url.port,
             path=parsed_url.path,
-            params=parsed_url.params,
             query=parsed_url.query,
             fragment=parsed_url.fragment,
         )

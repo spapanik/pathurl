@@ -21,6 +21,7 @@ Changed
 Removed
 ^^^^^^^
 * Removed the default scheme
+* Removed params attribute as it's unused
 
 `0.2.0`_ - 2022-01-05
 ---------------------
