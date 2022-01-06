@@ -9,6 +9,10 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 `Unreleased`_
 -------------
 
+Changed
+^^^^^
+* URL constructor accept kwargs only
+
 `0.2.0`_ - 2022-01-05
 ---------------------
 

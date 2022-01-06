@@ -20,6 +20,7 @@ class URL:
 
     def __init__(
         self,
+        *,
         scheme: str = "",
         username: str = None,
         password: str = None,
