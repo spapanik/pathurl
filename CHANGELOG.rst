@@ -9,6 +9,10 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 `Unreleased`_
 -------------
 
+Added
+^^^^^
+* URL has from_string as an alias to parse, to create new URLs
+
 Changed
 ^^^^^
 * URL constructor accept kwargs only

@@ -87,3 +87,7 @@ class URL:
             query=parsed_url.query,
             fragment=parsed_url.fragment,
         )
+
+    @classmethod
+    def from_string(cls, url: str) -> "URL":
+        return cls.parse(url)
