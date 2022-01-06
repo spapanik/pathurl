@@ -1,7 +1,5 @@
 from enum import Enum
 
-DEFAULT_SCHEME = "http"
-
 
 class Port(Enum):
     ftp = 21

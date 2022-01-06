@@ -17,6 +17,10 @@ Changed
 ^^^^^
 * URL constructor accept kwargs only
 
+Removed
+^^^^^^^
+* Removed the default scheme
+
 `0.2.0`_ - 2022-01-05
 ---------------------
 

@@ -1,6 +1,6 @@
 from urllib.parse import urlparse
 
-from pathurl.constants import DEFAULT_SCHEME, Port
+from pathurl.constants import Port
 from pathurl.path import Path
 from pathurl.query import Query
 
@@ -31,7 +31,7 @@ class URL:
         query: str = "",
         fragment: str = "",
     ):
-        self.scheme = scheme or DEFAULT_SCHEME
+        self.scheme = scheme
         self.username = username
         self.hostname = hostname
         self.password = password
@@ -42,7 +42,10 @@ class URL:
         self.fragment = fragment
 
     def __str__(self) -> str:
-        parts = [f"{self.scheme}://"]
+        parts = []
+        if self.scheme:
+            parts.append(f"{self.scheme}:")
+        parts.append("//")
         if self.username or self.password:
             if self.username:
                 parts.append(self.username)
