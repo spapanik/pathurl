@@ -14,7 +14,6 @@ class URL:
         "hostname",
         "port",
         "path",
-        "params",
         "query",
         "fragment",
     ]
