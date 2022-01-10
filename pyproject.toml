@@ -26,8 +26,8 @@ testpaths = "tests"
 
 [tool.poetry]
 name = "pathurl"
-version = "0.3.0"
-description = "OO url manipulation"
+version = "0.4.0"
+description = "url manipulation"
 authors = [
     "Stephanos Kuma <stephanos@kuma.ai>",
 ]

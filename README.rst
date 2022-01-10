@@ -34,7 +34,7 @@ The easiest way is to use `poetry`_ to manage your dependencies and add *pathurl
 .. code-block:: toml
 
     [tool.poetry.dependencies]
-    pathurl = "^0.3.0"
+    pathurl = "^0.4.0"
 
 Usage
 ^^^^^
