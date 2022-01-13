@@ -1,44 +1,82 @@
-from typing import List, Union
+from copy import deepcopy
+from typing import Dict, List, Tuple, Union
 from urllib.parse import parse_qs, urlencode
 
 qs_value = Union[str, List[str]]
 
 
 class Query:
-    __slots__ = ["_data"]
+    __slots__ = ["_string", "_data"]
 
-    def __init__(self, query_string: str = ""):
-        self._data = parse_qs(query_string, keep_blank_values=True)
+    def __init__(self, _string: str = ""):
+        self._data = self._str_to_dict(_string)
+        self._string = self._dict_to_str(self._data)
 
     def __str__(self) -> str:
-        return urlencode(self._data, doseq=True)
+        return self._string
+
+    def __hash__(self) -> int:
+        return hash(self._string)
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, self.__class__):
+            return NotImplemented
+        return self._string == other._string
 
     def __repr__(self):
         return f"Query('{self}')"
 
     def __bool__(self) -> bool:
-        return bool(self._data)
+        return bool(self._string)
 
-    def add(self, **kwargs: qs_value) -> None:
+    @property
+    def string(self) -> str:
+        return self._string
+
+    @property
+    def data(self) -> Dict[str, List[str]]:
+        return self._data
+
+    @staticmethod
+    def _str_to_dict(string: str) -> Dict[str, List[str]]:
+        return parse_qs(string, keep_blank_values=True)
+
+    @staticmethod
+    def _dict_to_str(data_: Dict[str, List[str]]) -> str:
+        return urlencode(data_, doseq=True)
+
+    def get(self, key: str) -> List[str]:
+        return self._data.get(key)
+
+    def add(self, **kwargs: qs_value) -> "Query":
+        data = deepcopy(self._data)
         for key, value in kwargs.items():
-            self._data.setdefault(key, [])
+            data.setdefault(key, [])
             if isinstance(value, list):
-                self._data[key].extend(value)
+                data[key].extend(value)
             else:
-                self._data[key].append(value)
+                data[key].append(value)
+        return self.__class__(self._dict_to_str(data))
 
-    def set(self, **kwargs: qs_value) -> None:  # noqa: A003
+    def set(self, **kwargs: qs_value) -> "Query":  # noqa: A003
+        data = deepcopy(self._data)
         for key, value in kwargs.items():
-            self._data.setdefault(key, [])
+            data.setdefault(key, [])
             if isinstance(value, list):
-                self._data[key] = value
+                data[key] = value
             else:
-                self._data[key] = [value]
+                data[key] = [value]
+        return self.__class__(self._dict_to_str(data))
 
-    def replace(self, key: str, old_value: str, new_value: str) -> None:
-        for i, value in enumerate(self._data.get(key, [])):
-            if value == old_value:
-                self._data[key][i] = new_value
+    def replace(self, **kwargs: Tuple[str, str]) -> "Query":
+        data = deepcopy(self._data)
+        for key, (old_value, new_value) in kwargs.items():
+            for i, value in enumerate(data.get(key, [])):
+                if value == old_value:
+                    data[key][i] = new_value
+        return self.__class__(self._dict_to_str(data))
 
-    def remove(self, key: str) -> None:
-        del self._data[key]
+    def remove(self, key: str) -> "Query":
+        data = deepcopy(self._data)
+        del data[key]
+        return self.__class__(self._dict_to_str(data))
