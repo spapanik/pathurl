@@ -49,18 +49,18 @@ python = "^3.7.0"
 [tool.poetry.dev-dependencies]
 black = "^21.12b0"
 isort = "^5.10.0"
-mypy = "^0.930"
+mypy = "^0.931"
 
 pytest = "^6.2.0"
 
 sphinx = "^4.3.0"
 sphinx-rtd-theme = "^1.0.0"
 
-ipython = "^7.30.0"
-ipdb = "^0.13.0"
+ptpython = "^3.0.0"
+pdbpp = "^0.10.0"
 
 flake8 = "^4.0.0"
-flake8-bugbear = "^21.11.0"
+flake8-bugbear = "^22.1.0"
 flake8-builtins = "^1.5.0"
 flake8-comprehensions = "^3.7.0"
 flake8-eradicate = "^1.2.0"
