@@ -39,7 +39,7 @@ The easiest way is to use `poetry`_ to manage your dependencies and add *pathurl
 Usage
 ^^^^^
 
-``pathurl`` offers a class to manipulate URLs and a class to manipulate the query string.
+``pathurl`` offers classes to manipulate URLs, paths and query strings. All objects are immutable.
 
 Links
 -----

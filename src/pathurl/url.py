@@ -8,60 +8,87 @@ from pathurl.query import Query
 
 class URL:
     __slots__ = [
-        "scheme",
-        "username",
-        "password",
-        "hostname",
-        "port",
-        "path",
-        "query",
-        "fragment",
+        "_string",
+        "_netloc",
+        "_scheme",
+        "_username",
+        "_password",
+        "_hostname",
+        "_port",
+        "_path",
+        "_query",
+        "_fragment",
     ]
 
-    def __init__(
-        self,
-        *,
-        scheme: str = "",
-        username: str = None,
-        password: str = None,
-        hostname: str = None,
-        port: int = None,
-        path: str = "",
-        query: str = "",
-        fragment: str = "",
-    ):
-        self.scheme = scheme
-        self.username = username
-        self.hostname = hostname
-        self.password = password
-        self.port = port or self._infer_port(self.scheme)
-        self.path = Path(path)
-        self.query = Query(query)
-        self.fragment = fragment
+    def __init__(self, string: str = ""):
+        parsed_url = urlparse(string)
+        self._string = string
+        self._netloc = parsed_url.netloc
+        self._scheme = parsed_url.scheme
+        self._username = parsed_url.username
+        self._hostname = parsed_url.hostname
+        self._password = parsed_url.password
+        self._port = parsed_url.port or self._infer_port(self._scheme)
+        self._path = Path(parsed_url.path)
+        self._query = Query(parsed_url.query)
+        self._fragment = parsed_url.fragment
 
-    def __str__(self) -> str:
-        parts = []
-        if self.scheme:
-            parts.append(f"{self.scheme}:")
-        parts.append("//")
-        if self.username or self.password:
-            if self.username:
-                parts.append(self.username)
-            if self.password:
-                parts.append(f":{self.password}")
-            parts.append("@")
-        parts.append(self.hostname)
-        if self.port and self.port != self._infer_port(self.scheme):
-            parts.append(f":{self.port}")
-        parts.append(str(self.path))
-        if self.query:
-            parts.append(f"?{self.query}")
-        if self.fragment:
-            parts.append(f"#{self.fragment}")
-        return "".join(parts)
+    def __str__(self):
+        return self._string
+
+    def __hash__(self) -> int:
+        return hash(self._string)
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, self.__class__):
+            return NotImplemented
+        return self._string == other._string
 
     def __repr__(self):
         return f"URL('{self}')"
+
+    def __bool__(self) -> bool:
+        return bool(self._string)
+
+    @property
+    def string(self) -> str:
+        return self._string
+
+    @property
+    def netloc(self) -> str:
+        return self._netloc
+
+    @property
+    def scheme(self) -> str:
+        return self._scheme
+
+    @property
+    def username(self) -> str:
+        return self._username
+
+    @property
+    def hostname(self) -> str:
+        return self._hostname
+
+    @property
+    def password(self) -> str:
+        return self._password
+
+    @property
+    def port(self) -> int:
+        return self._port
+
+    @property
+    def path(self) -> Path:
+        return self._path
+
+    @property
+    def query(self) -> Query:
+        return self._query
+
+    @property
+    def fragment(self) -> str:
+        return self._fragment
 
     @staticmethod
     def _infer_port(scheme: str) -> int:
@@ -73,22 +100,4 @@ class URL:
         return port.value
 
     def join(self, path: Union[str, Path]) -> "URL":
-        return self.__class__.from_string(urljoin(str(self), str(path)))
-
-    @classmethod
-    def parse(cls, url: str) -> "URL":
-        parsed_url = urlparse(url)
-        return cls(
-            scheme=parsed_url.scheme,
-            username=parsed_url.username,
-            password=parsed_url.password,
-            hostname=parsed_url.hostname,
-            port=parsed_url.port,
-            path=parsed_url.path,
-            query=parsed_url.query,
-            fragment=parsed_url.fragment,
-        )
-
-    @classmethod
-    def from_string(cls, url: str) -> "URL":
-        return cls.parse(url)
+        return self.__class__(urljoin(str(self), str(path)))
