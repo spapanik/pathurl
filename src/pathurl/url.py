@@ -1,7 +1,7 @@
 from typing import Union
 from urllib.parse import urljoin, urlparse
 
-from pathurl.constants import Port
+from pathurl._constants import Port
 from pathurl.path import Path
 from pathurl.query import Query
 
