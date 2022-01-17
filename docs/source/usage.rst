@@ -93,6 +93,50 @@ Worked example:
 
     'z'
 
+.. py:module:: pathurl.path
+
+The ``path`` module contains only the ``Path`` class:
+
+.. py:class:: Path
+
+    A class representing the path in a URL
+
+    .. py:method:: __init__(_string: str)
+
+        Initialise the path from a string.
+
+    .. py:property:: string
+        :type: str
+
+        Get the path as a string
+
+    .. py:property:: is_absolute
+        :type: bool
+
+        Check if it is an absolute path or not
+
+    .. py:property:: segments
+        :type: List[str]
+
+        Split the path in its segments
+
+Worked example:
+
+.. code-block:: python
+
+    >>> from pathurl import Path
+    # Create a path
+    >>> path = Path("/questions/1234")
+    # Create a path string
+    >>> path.string
+    '/questions/1234'
+    # Check if it is an absolute path
+    >>> path.is_absolute
+    True
+    # Get the path segments
+    >>> path.segments
+    ['questions', '1234']
+
 .. py:module:: pathurl.url
 
 The ``url`` module contains only the ``URL`` class:

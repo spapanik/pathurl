@@ -12,6 +12,7 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 Changed
 ^^^^^^^
 * Query is immutable, with a new interface
+* Path is immutable, with a new interface
 
 `0.4.0`_ - 2022-01-10
 ---------------------
