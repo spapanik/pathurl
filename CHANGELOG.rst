@@ -25,7 +25,7 @@ Added
 * Allow joining paths, and URLs with paths
 
 Changed
-^^^^^
+^^^^^^^
 * URL constructor accept kwargs only
 
 Removed
