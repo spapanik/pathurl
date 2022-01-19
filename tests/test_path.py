@@ -24,7 +24,7 @@ def test_eq(string):
         ["/foo", True],
         ["/foo/", True],
         ["/foo/bar", True],
-    ]
+    ],
 )
 def test_bool(string, expected):
     path = Path(string)
@@ -42,7 +42,7 @@ def test_bool(string, expected):
         ["foo", False],
         ["foo/", False],
         ["foo/bar", False],
-    ]
+    ],
 )
 def test_is_absolute(string, expected):
     path = Path(string)
@@ -60,7 +60,7 @@ def test_is_absolute(string, expected):
         ["foo", ["foo"]],
         ["foo/", ["foo"]],
         ["foo/bar", ["foo", "bar"]],
-    ]
+    ],
 )
 def test_segments(string, expected):
     path = Path(string)

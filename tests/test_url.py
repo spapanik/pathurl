@@ -15,7 +15,7 @@ from pathurl.url import URL
         ["https://user:pass@www.example.com/"],
         ["http://user:pass@www.example.com:8000/"],
         ["//www.example.com/path?key=value"],
-    ]
+    ],
 )
 def test_str(string):
     url = URL(string)
@@ -34,7 +34,7 @@ def test_str(string):
         ["https://user:pass@www.example.com/"],
         ["http://user:pass@www.example.com:8000/"],
         ["//www.example.com/path?key=value"],
-    ]
+    ],
 )
 def test_eq(string):
     url_1 = URL(string)
@@ -54,7 +54,7 @@ def test_eq(string):
         ["https://user:pass@www.example.com/", True],
         ["http://user:pass@www.example.com:8000/", True],
         ["//www.example.com/path?key=value", True],
-    ]
+    ],
 )
 def test_bool(string, expected):
     url = URL(string)
