@@ -12,6 +12,7 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 Added
 ^^^^^
 * Allow passing a dict in Query methods for keys that cannot be keyword arguments
+* Allow replacing parts of a URL
 
 Changed
 ^^^^^^^

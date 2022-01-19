@@ -1,5 +1,6 @@
 import pytest
 
+from pathurl.query import Query
 from pathurl.url import URL
 
 
@@ -59,3 +60,9 @@ def test_eq(string):
 def test_bool(string, expected):
     url = URL(string)
     assert bool(url) is expected
+
+
+def test_replace():
+    url = URL("https://www.example.com/")
+    expected = "https://www.example.com/?x=2#xyz"
+    assert url.replace(query=Query("x=2"), fragment="xyz").string == expected

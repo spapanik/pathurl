@@ -154,3 +154,36 @@ The ``url`` module contains only the ``URL`` class:
     .. py:method:: join(self, path: Union[str, Path]) -> URL
 
         Join the URL with a path
+
+    .. py:method:: replace(self, **kwargs) -> URL
+
+        Replace parts of the url with a new one. The parts that can be replaced are:
+
+            * scheme
+            * username
+            * password
+            * hostname
+            * port
+            * path
+            * query
+            * fragment
+
+Worked example:
+
+.. code-block:: python
+
+    >>> from pathurl import URL
+    # Create a URL
+    >>> url = URL("https://example.com/questions/")
+    # Get the string
+    >>> url.string
+    'https://example.com/questions/'
+    # Get the port
+    >>> url.port
+    443
+    # Join with a relative path
+    >>> url.join("1234")
+    URL('https://example.com/questions/1234')
+    # Replace parts of the URL
+    >>> url.replace(port=8000, fragment="last")
+    URL('https://example.com:8000/questions/#last')

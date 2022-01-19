@@ -1,5 +1,5 @@
 from typing import Union
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin, urlsplit, urlunsplit
 
 from pathurl._constants import Port
 from pathurl.path import Path
@@ -21,7 +21,7 @@ class URL:
     ]
 
     def __init__(self, string: str = ""):
-        parsed_url = urlparse(string)
+        parsed_url = urlsplit(string)
         self._string = string
         self._netloc = parsed_url.netloc
         self._scheme = parsed_url.scheme
@@ -98,6 +98,52 @@ class URL:
             return None
 
         return port.value
+
+    @classmethod
+    def _create_netloc(
+        cls, scheme: str, username: str, password: str, hostname: str, port: int
+    ) -> str:
+        parts = []
+        if username or password:
+            if username:
+                parts.append(username)
+            if password:
+                parts.append(f":{password}")
+            parts.append("@")
+        parts.append(hostname)
+        if port and port != cls._infer_port(scheme):
+            parts.append(f":{port}")
+        return "".join(parts)
+
+    @classmethod
+    def _from_parts(
+        cls,
+        scheme: str,
+        username: str,
+        password: str,
+        hostname: str,
+        port: int,
+        path: Union[str, Path],
+        query: Union[str, Query],
+        fragment: str,
+    ) -> "URL":
+        netloc = cls._create_netloc(scheme, username, password, hostname, port)
+        return cls(urlunsplit((scheme, netloc, str(path), str(query), fragment)))
+
+    def replace(self, **kwargs) -> "URL":
+        parts = {
+            "scheme",
+            "username",
+            "password",
+            "hostname",
+            "port",
+            "path",
+            "query",
+            "fragment",
+        }
+        for part in parts:
+            kwargs.setdefault(part, getattr(self, part))
+        return self._from_parts(**kwargs)
 
     def join(self, path: Union[str, Path]) -> "URL":
         return self.__class__(urljoin(str(self), str(path)))
