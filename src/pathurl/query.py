@@ -48,9 +48,10 @@ class Query:
     def get(self, key: str) -> List[str]:
         return self._data.get(key)
 
-    def add(self, **kwargs: qs_value) -> "Query":
+    def add(self, dict_: Dict[str, qs_value] = None, **kwargs: qs_value) -> "Query":
         data = deepcopy(self._data)
-        for key, value in kwargs.items():
+        dict_ = dict(dict_ or {}, **kwargs)
+        for key, value in dict_.items():
             data.setdefault(key, [])
             if isinstance(value, list):
                 data[key].extend(value)
@@ -58,9 +59,12 @@ class Query:
                 data[key].append(value)
         return self.__class__(self._dict_to_str(data))
 
-    def set(self, **kwargs: qs_value) -> "Query":  # noqa: A003
+    def set(  # noqa: A003
+        self, dict_: Dict[str, qs_value] = None, **kwargs: qs_value
+    ) -> "Query":
         data = deepcopy(self._data)
-        for key, value in kwargs.items():
+        dict_ = dict(dict_ or {}, **kwargs)
+        for key, value in dict_.items():
             data.setdefault(key, [])
             if isinstance(value, list):
                 data[key] = value
@@ -68,9 +72,12 @@ class Query:
                 data[key] = [value]
         return self.__class__(self._dict_to_str(data))
 
-    def replace(self, **kwargs: Tuple[str, str]) -> "Query":
+    def replace(
+        self, dict_: Dict[str, Tuple[str, str]] = None, **kwargs: Tuple[str, str]
+    ) -> "Query":
         data = deepcopy(self._data)
-        for key, (old_value, new_value) in kwargs.items():
+        dict_ = dict(dict_ or {}, **kwargs)
+        for key, (old_value, new_value) in dict_.items():
             for i, value in enumerate(data.get(key, [])):
                 if value == old_value:
                     data[key][i] = new_value

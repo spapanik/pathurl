@@ -9,6 +9,10 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 `Unreleased`_
 -------------
 
+Added
+^^^^^
+* Allow passing a dict in Query methods for keys that cannot be keyword arguments
+
 Changed
 ^^^^^^^
 * Query is immutable, with a new interface

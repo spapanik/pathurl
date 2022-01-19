@@ -28,17 +28,17 @@ The ``query`` module contains only the ``Query`` class:
 
         Get the value of a single key from the query string. Return None if the key isn't present.
 
-    .. py:method:: add(**kwargs: qs_value) -> Query
+    .. py:method:: add(dict_: Dict[str, Union[str, List[str]]], **kwargs: Union[str, List[str]]) -> Query
 
         Append to the values of each keyword argument the new value.
 
         If the new value is a list, it extends the old list.
 
-    .. py:method:: set(**kwargs: qs_value) -> Query
+    .. py:method:: set(dict_: Dict[str, Union[str, List[str]]], **kwargs: Union[str, List[str]]) -> Query
 
         Set the values of each keyword argument
 
-    .. py:method:: replace(**kwargs: Tuple[str, str]) -> Query
+    .. py:method:: replace(dict_: Dict[str, Tuple[str, str]], **kwargs: Tuple[str, str]) -> Query
 
         For every keyword argument, replace the first value with the second
 
