@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from copy import deepcopy
-from typing import Dict, List, Tuple, Union
+from typing import List, Union
 from urllib.parse import parse_qs, urlencode
 
 qs_value = Union[str, List[str]]
@@ -34,21 +36,23 @@ class Query:
         return self._string
 
     @property
-    def data(self) -> Dict[str, List[str]]:
+    def data(self) -> dict[str, list[str]]:
         return self._data
 
     @staticmethod
-    def _str_to_dict(string: str) -> Dict[str, List[str]]:
+    def _str_to_dict(string: str) -> dict[str, list[str]]:
         return parse_qs(string, keep_blank_values=True)
 
     @staticmethod
-    def _dict_to_str(data_: Dict[str, List[str]]) -> str:
+    def _dict_to_str(data_: dict[str, list[str]]) -> str:
         return urlencode(data_, doseq=True)
 
-    def get(self, key: str) -> List[str]:
+    def get(self, key: str) -> list[str] | None:
         return self._data.get(key)
 
-    def add(self, dict_: Dict[str, qs_value] = None, **kwargs: qs_value) -> "Query":
+    def add(
+        self, dict_: dict[str, qs_value] | None = None, **kwargs: qs_value
+    ) -> Query:
         data = deepcopy(self._data)
         dict_ = dict(dict_ or {}, **kwargs)
         for key, value in dict_.items():
@@ -60,8 +64,8 @@ class Query:
         return self.__class__(self._dict_to_str(data))
 
     def set(  # noqa: A003
-        self, dict_: Dict[str, qs_value] = None, **kwargs: qs_value
-    ) -> "Query":
+        self, dict_: dict[str, qs_value] | None = None, **kwargs: qs_value
+    ) -> Query:
         data = deepcopy(self._data)
         dict_ = dict(dict_ or {}, **kwargs)
         for key, value in dict_.items():
@@ -73,8 +77,8 @@ class Query:
         return self.__class__(self._dict_to_str(data))
 
     def replace(
-        self, dict_: Dict[str, Tuple[str, str]] = None, **kwargs: Tuple[str, str]
-    ) -> "Query":
+        self, dict_: dict[str, tuple[str, str]] | None = None, **kwargs: tuple[str, str]
+    ) -> Query:
         data = deepcopy(self._data)
         dict_ = dict(dict_ or {}, **kwargs)
         for key, (old_value, new_value) in dict_.items():
@@ -83,7 +87,7 @@ class Query:
                     data[key][i] = new_value
         return self.__class__(self._dict_to_str(data))
 
-    def remove(self, key: str) -> "Query":
+    def remove(self, key: str) -> Query:
         data = deepcopy(self._data)
         del data[key]
         return self.__class__(self._dict_to_str(data))

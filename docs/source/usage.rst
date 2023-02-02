@@ -20,25 +20,25 @@ The ``query`` module contains only the ``Query`` class:
         Get the query string
 
     .. py:property:: data
-        :type: Dict[str, List[str]]
+        :type: dict[str, list[str]]
 
         Get the query as a dictionary
 
-    .. py:method:: get(key: str) -> List[str]
+    .. py:method:: get(key: str) -> list[str]
 
         Get the value of a single key from the query string. Return None if the key isn't present.
 
-    .. py:method:: add(dict_: Dict[str, Union[str, List[str]]], **kwargs: Union[str, List[str]]) -> Query
+    .. py:method:: add(dict_: dict[str, str | list[str]], **kwargs: str | list[str]) -> Query
 
         Append to the values of each keyword argument the new value.
 
         If the new value is a list, it extends the old list.
 
-    .. py:method:: set(dict_: Dict[str, Union[str, List[str]]], **kwargs: Union[str, List[str]]) -> Query
+    .. py:method:: set(dict_: dict[str, str | list[str]], **kwargs: str | list[str]) -> Query
 
         Set the values of each keyword argument
 
-    .. py:method:: replace(dict_: Dict[str, Tuple[str, str]], **kwargs: Tuple[str, str]) -> Query
+    .. py:method:: replace(dict_: dict[str, tuple[str, str]], **kwargs: tuple[str, str]) -> Query
 
         For every keyword argument, replace the first value with the second
 
@@ -116,7 +116,7 @@ The ``path`` module contains only the ``Path`` class:
         Check if it is an absolute path or not
 
     .. py:property:: segments
-        :type: List[str]
+        :type: list[str]
 
         Split the path in its segments
 
@@ -151,7 +151,7 @@ The ``url`` module contains only the ``URL`` class:
 
         Initialise the URL as a string. It accepts strings that have no scheme, but they start with ``//``.
 
-    .. py:method:: join(self, path: Union[str, Path]) -> URL
+    .. py:method:: join(self, path: str | Path) -> URL
 
         Join the URL with a path
 

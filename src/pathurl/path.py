@@ -1,4 +1,4 @@
-from typing import List
+from __future__ import annotations
 
 
 class Path:
@@ -33,7 +33,7 @@ class Path:
         return self._string.startswith("/")
 
     @property
-    def segments(self) -> List[str]:
+    def segments(self) -> list[str]:
         split = self._string.rstrip("/").split("/")
         if self.is_absolute or not self:
             return split[1:]

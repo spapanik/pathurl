@@ -5,9 +5,6 @@ pathurl: object-oriented URLs
 .. image:: https://github.com/spapanik/pathurl/actions/workflows/build.yml/badge.svg
   :alt: Build
   :target: https://github.com/spapanik/pathurl/actions/workflows/build.yml
-.. image:: https://img.shields.io/lgtm/alerts/g/spapanik/pathurl.svg
-  :alt: Total alerts
-  :target: https://lgtm.com/projects/g/spapanik/pathurl/alerts/
 .. image:: https://img.shields.io/github/license/spapanik/pathurl
   :alt: License
   :target: https://github.com/spapanik/pathurl/blob/main/LICENSE.txt
