@@ -25,7 +25,7 @@ class Query:
             return NotImplemented
         return self._string == other._string
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Query('{self}')"
 
     def __bool__(self) -> bool:

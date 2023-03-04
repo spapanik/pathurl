@@ -7,7 +7,7 @@ class Path:
     def __init__(self, string: str = ""):
         self._string = string
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self._string
 
     def __hash__(self) -> int:
@@ -18,7 +18,7 @@ class Path:
             return NotImplemented
         return self._string == other._string
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Path('{self}')"
 
     def __bool__(self) -> bool:

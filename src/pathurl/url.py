@@ -34,7 +34,7 @@ class URL:
         self._query = Query(parsed_url.query)
         self._fragment = parsed_url.fragment
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self._string
 
     def __hash__(self) -> int:
@@ -45,7 +45,7 @@ class URL:
             return NotImplemented
         return self._string == other._string
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"URL('{self}')"
 
     def __bool__(self) -> bool:
