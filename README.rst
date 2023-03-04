@@ -2,9 +2,9 @@
 pathurl: object-oriented URLs
 =============================
 
-.. image:: https://github.com/spapanik/pathurl/actions/workflows/build.yml/badge.svg
-  :alt: Build
-  :target: https://github.com/spapanik/pathurl/actions/workflows/build.yml
+.. image:: https://github.com/spapanik/pathurl/actions/workflows/test.yml/badge.svg
+  :alt: Tests
+  :target: https://github.com/spapanik/pathurl/actions/workflows/test.yml
 .. image:: https://img.shields.io/github/license/spapanik/pathurl
   :alt: License
   :target: https://github.com/spapanik/pathurl/blob/main/LICENSE.txt
