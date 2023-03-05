@@ -33,6 +33,7 @@ select = [
     "T10",
     "TID",
     "UP",
+    "W",
 ]
 ignore = ["E501"]
 src = ["src"]
