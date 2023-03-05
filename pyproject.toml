@@ -52,7 +52,7 @@ testpaths = "tests"
 
 [tool.coverage.run]
 source = ["src/"]
-data_file = ".coverage_cache/coverage"
+data_file = ".cov_cache/coverage.dat"
 
 [tool.poetry]
 name = "pathurl"
