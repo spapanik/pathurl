@@ -43,7 +43,7 @@ class URL:
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, self.__class__):
             return NotImplemented
-        return self._string == other._string
+        return self._string == other._string  # noqa: SLF001
 
     def __repr__(self) -> str:
         return f"URL('{self}')"
