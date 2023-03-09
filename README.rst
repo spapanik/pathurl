@@ -2,9 +2,9 @@
 pathurl: object-oriented URLs
 =============================
 
-.. image:: https://github.com/spapanik/pathurl/actions/workflows/test.yml/badge.svg
+.. image:: https://github.com/spapanik/pathurl/actions/workflows/tests.yml/badge.svg
   :alt: Tests
-  :target: https://github.com/spapanik/pathurl/actions/workflows/test.yml
+  :target: https://github.com/spapanik/pathurl/actions/workflows/tests.yml
 .. image:: https://img.shields.io/github/license/spapanik/pathurl
   :alt: License
   :target: https://github.com/spapanik/pathurl/blob/main/LICENSE.txt
@@ -15,8 +15,14 @@ pathurl: object-oriented URLs
   :alt: Downloads
   :target: https://pepy.tech/project/pathurl
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-  :alt: Code style
+  :alt: code style: black
   :target: https://github.com/psf/black
+.. image:: https://img.shields.io/badge/build%20automation-yamk-success
+  :alt: build automation: yam
+  :target: https://github.com/spapanik/yamk
+.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json
+  :alt: Lint: ruff
+  :target: https://github.com/charliermarsh/ruff
 
 ``pathurl`` is an objected-oriented way of manipulating URLs.
 
