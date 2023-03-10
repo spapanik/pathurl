@@ -3,13 +3,13 @@ import pytest
 from pathurl.path import Path
 
 
-@pytest.mark.parametrize(["string"], [[""], ["/"], ["/foo"], ["/foo/"], ["/foo/bar"]])
+@pytest.mark.parametrize("string", ["", "/", "/foo", "/foo/", "/foo/bar"])
 def test_str(string):
     path = Path(string)
     assert path.string == string
 
 
-@pytest.mark.parametrize(["string"], [[""], ["/"], ["/foo"], ["/foo/"], ["/foo/bar"]])
+@pytest.mark.parametrize("string", ["", "/", "/foo", "/foo/", "/foo/bar"])
 def test_eq(string):
     path_1 = Path(string)
     path_2 = Path(string)
@@ -17,13 +17,13 @@ def test_eq(string):
 
 
 @pytest.mark.parametrize(
-    ["string", "expected"],
+    ("string", "expected"),
     [
-        ["", False],
-        ["/", True],
-        ["/foo", True],
-        ["/foo/", True],
-        ["/foo/bar", True],
+        ("", False),
+        ("/", True),
+        ("/foo", True),
+        ("/foo/", True),
+        ("/foo/bar", True),
     ],
 )
 def test_bool(string, expected):
@@ -32,16 +32,16 @@ def test_bool(string, expected):
 
 
 @pytest.mark.parametrize(
-    ["string", "expected"],
+    ("string", "expected"),
     [
-        ["", False],
-        ["/", True],
-        ["/foo", True],
-        ["/foo/", True],
-        ["/foo/bar", True],
-        ["foo", False],
-        ["foo/", False],
-        ["foo/bar", False],
+        ("", False),
+        ("/", True),
+        ("/foo", True),
+        ("/foo/", True),
+        ("/foo/bar", True),
+        ("foo", False),
+        ("foo/", False),
+        ("foo/bar", False),
     ],
 )
 def test_is_absolute(string, expected):
@@ -50,16 +50,16 @@ def test_is_absolute(string, expected):
 
 
 @pytest.mark.parametrize(
-    ["string", "expected"],
+    ("string", "expected"),
     [
-        ["", []],
-        ["/", []],
-        ["/foo", ["foo"]],
-        ["/foo/", ["foo"]],
-        ["/foo/bar", ["foo", "bar"]],
-        ["foo", ["foo"]],
-        ["foo/", ["foo"]],
-        ["foo/bar", ["foo", "bar"]],
+        ("", []),
+        ("/", []),
+        ("/foo", ["foo"]),
+        ("/foo/", ["foo"]),
+        ("/foo/bar", ["foo", "bar"]),
+        ("foo", ["foo"]),
+        ("foo/", ["foo"]),
+        ("foo/bar", ["foo", "bar"]),
     ],
 )
 def test_segments(string, expected):
