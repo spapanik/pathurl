@@ -23,7 +23,7 @@ class Query:
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, self.__class__):
             return NotImplemented
-        return self._string == other._string  # noqa: SLF001
+        return self._string == other._string
 
     def __repr__(self) -> str:
         return f"Query('{self}')"
