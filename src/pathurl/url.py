@@ -8,7 +8,7 @@ from pathurl.query import Query
 
 
 class URL:
-    __slots__ = [
+    __slots__ = (
         "_string",
         "_netloc",
         "_scheme",
@@ -19,7 +19,7 @@ class URL:
         "_path",
         "_query",
         "_fragment",
-    ]
+    )
 
     def __init__(self, string: str = ""):
         parsed_url = urlsplit(string)

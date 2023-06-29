@@ -2,7 +2,7 @@ from __future__ import annotations
 
 
 class Path:
-    __slots__ = ["_string"]
+    __slots__ = ("_string",)
 
     def __init__(self, string: str = ""):
         self._string = string
