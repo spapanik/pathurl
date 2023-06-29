@@ -35,6 +35,21 @@ class URL:
         self._query = Query(parsed_url.query)
         self._fragment = parsed_url.fragment
 
+    @classmethod
+    def from_parts(
+        cls,
+        scheme: str,
+        username: str | None = None,
+        password: str | None = None,
+        hostname: str = "",
+        port: int | None = None,
+        path: str | Path = Path(),
+        query: str | Query = Query(),
+        fragment: str = "",
+    ) -> URL:
+        netloc = cls._create_netloc(scheme, username, password, hostname, port)
+        return cls(urlunsplit((scheme, netloc, str(path), str(query), fragment)))
+
     def __str__(self) -> str:
         return self._string
 
@@ -117,21 +132,6 @@ class URL:
             parts.append(f":{port}")
         return "".join(parts)
 
-    @classmethod
-    def _from_parts(
-        cls,
-        scheme: str,
-        username: str,
-        password: str,
-        hostname: str,
-        port: int,
-        path: str | Path,
-        query: str | Query,
-        fragment: str,
-    ) -> URL:
-        netloc = cls._create_netloc(scheme, username, password, hostname, port)
-        return cls(urlunsplit((scheme, netloc, str(path), str(query), fragment)))
-
     def replace(self, **kwargs: Any) -> URL:
         parts = {
             "scheme",
@@ -145,7 +145,7 @@ class URL:
         }
         for part in parts:
             kwargs.setdefault(part, getattr(self, part))
-        return self._from_parts(**kwargs)
+        return self.from_parts(**kwargs)
 
     def join(self, path: str | Path) -> URL:
         return self.__class__(urljoin(str(self), str(path)))

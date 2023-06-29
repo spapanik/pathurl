@@ -9,6 +9,10 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 `Unreleased`_
 -------------
 
+Added
+^^^^^
+* Add constructors for URL, Path, Query that accept the parts as arguments
+
 Removed
 ^^^^^^^
 * Drop python 3.7 support

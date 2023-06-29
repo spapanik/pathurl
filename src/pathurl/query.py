@@ -14,6 +14,11 @@ class Query:
         self._data = self._str_to_dict(_string)
         self._string = self._dict_to_str(self._data)
 
+    @classmethod
+    def from_dict(cls, dict_: dict[str, qs_value] | None = None, **kwargs: qs_value) -> Query:
+        dict_ = dict(dict_ or {}, **kwargs)
+        return cls(cls._dict_to_str(dict_))
+
     def __str__(self) -> str:
         return self._string
 

@@ -7,6 +7,15 @@ class Path:
     def __init__(self, string: str = ""):
         self._string = string
 
+    @classmethod
+    def from_segments(cls, *segments: str, is_dir: bool = False, is_absolute: bool = True) -> Path:
+        string = "/".join(segments)
+        if is_dir:
+            string = f"{string}/"
+        if is_absolute:
+            string = f"/{string}"
+        return cls(string)
+
     def __str__(self) -> str:
         return self._string
 
