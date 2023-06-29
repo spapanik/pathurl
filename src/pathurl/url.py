@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from typing import Any
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 from pathurl._constants import Port
@@ -131,7 +132,7 @@ class URL:
         netloc = cls._create_netloc(scheme, username, password, hostname, port)
         return cls(urlunsplit((scheme, netloc, str(path), str(query), fragment)))
 
-    def replace(self, **kwargs) -> URL:
+    def replace(self, **kwargs: Any) -> URL:
         parts = {
             "scheme",
             "username",

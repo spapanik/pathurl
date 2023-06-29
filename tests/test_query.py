@@ -1,16 +1,18 @@
+from __future__ import annotations
+
 import pytest
 
 from pathurl.query import Query
 
 
 @pytest.mark.parametrize("string", ["", "x=1", "x=1&x=2", "x=1&x=2&y=2"])
-def test_str(string):
+def test_str(string: str) -> None:
     query = Query(string)
     assert query.string == string
 
 
 @pytest.mark.parametrize("string", ["", "x=1", "x=1&x=2", "x=1&x=2&y=2"])
-def test_eq(string):
+def test_eq(string: str) -> None:
     query_1 = Query(string)
     query_2 = Query(string)
     assert query_1 == query_2
@@ -25,7 +27,7 @@ def test_eq(string):
         ("x=1&x=2&y=2", True),
     ],
 )
-def test_bool(string, expected):
+def test_bool(string: str, expected: bool) -> None:
     query = Query(string)
     assert bool(query) is expected
 
@@ -39,7 +41,7 @@ def test_bool(string, expected):
         ("x=1&x=2&y=2", {"x": ["1", "2"], "y": ["2"]}),
     ],
 )
-def test_data(string, expected):
+def test_data(string: str, expected: dict[str, list[str]]) -> None:
     query = Query(string)
     assert query.data == expected
 
@@ -56,7 +58,7 @@ def test_data(string, expected):
         ("x=1&x=2&y=2", "y", ["2"]),
     ],
 )
-def test_get(string, key, expected):
+def test_get(string: str, key: str, expected: list[str] | None) -> None:
     query = Query(string)
     assert query.get(key) == expected
 
@@ -77,9 +79,9 @@ def test_get(string, key, expected):
         ("x=1&x=2&y=2", {"x": "1"}, "x=1&y=2"),
     ],
 )
-def test_set(string, kwargs, expected):
+def test_set(string: str, kwargs: dict[str, str], expected: str) -> None:
     query = Query(string)
-    assert query.set(**kwargs).string == expected
+    assert query.set(**kwargs).string == expected  # type: ignore[arg-type]
 
 
 @pytest.mark.parametrize(
@@ -97,9 +99,11 @@ def test_set(string, kwargs, expected):
         ("x=1&x=2&y=2", {"y": ("2", "3")}, "x=1&x=2&y=3"),
     ],
 )
-def test_replace(string, kwargs, expected):
+def test_replace(
+    string: str, kwargs: dict[str, tuple[str, str]], expected: str
+) -> None:
     query = Query(string)
-    assert query.replace(**kwargs).string == expected
+    assert query.replace(**kwargs).string == expected  # type: ignore[arg-type]
 
 
 @pytest.mark.parametrize(
@@ -112,6 +116,6 @@ def test_replace(string, kwargs, expected):
         ("x=1&x=2&y=2", "y", "x=1&x=2"),
     ],
 )
-def test_remove(string, key, expected):
+def test_remove(string: str, key: str, expected: str) -> None:
     query = Query(string)
     assert query.remove(key).string == expected

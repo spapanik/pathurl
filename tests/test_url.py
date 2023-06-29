@@ -18,7 +18,7 @@ from pathurl.url import URL
         "//www.example.com/path?key=value",
     ],
 )
-def test_str(string):
+def test_str(string: str) -> None:
     url = URL(string)
     assert url.string == string
 
@@ -37,7 +37,7 @@ def test_str(string):
         "//www.example.com/path?key=value",
     ],
 )
-def test_eq(string):
+def test_eq(string: str) -> None:
     url_1 = URL(string)
     url_2 = URL(string)
     assert url_1 == url_2
@@ -57,12 +57,12 @@ def test_eq(string):
         ("//www.example.com/path?key=value", True),
     ],
 )
-def test_bool(string, expected):
+def test_bool(string: str, expected: bool) -> None:
     url = URL(string)
     assert bool(url) is expected
 
 
-def test_replace():
+def test_replace() -> None:
     url = URL("https://www.example.com/")
     expected = "https://www.example.com/?x=2#xyz"
     assert url.replace(query=Query("x=2"), fragment="xyz").string == expected

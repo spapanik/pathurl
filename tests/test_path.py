@@ -1,16 +1,18 @@
+from __future__ import annotations
+
 import pytest
 
 from pathurl.path import Path
 
 
 @pytest.mark.parametrize("string", ["", "/", "/foo", "/foo/", "/foo/bar"])
-def test_str(string):
+def test_str(string: str) -> None:
     path = Path(string)
     assert path.string == string
 
 
 @pytest.mark.parametrize("string", ["", "/", "/foo", "/foo/", "/foo/bar"])
-def test_eq(string):
+def test_eq(string: str) -> None:
     path_1 = Path(string)
     path_2 = Path(string)
     assert path_1 == path_2
@@ -26,7 +28,7 @@ def test_eq(string):
         ("/foo/bar", True),
     ],
 )
-def test_bool(string, expected):
+def test_bool(string: str, expected: bool) -> None:
     path = Path(string)
     assert bool(path) is expected
 
@@ -44,7 +46,7 @@ def test_bool(string, expected):
         ("foo/bar", False),
     ],
 )
-def test_is_absolute(string, expected):
+def test_is_absolute(string: str, expected: bool) -> None:
     path = Path(string)
     assert path.is_absolute is expected
 
@@ -62,6 +64,6 @@ def test_is_absolute(string, expected):
         ("foo/bar", ["foo", "bar"]),
     ],
 )
-def test_segments(string, expected):
+def test_segments(string: str, expected: list[str]) -> None:
     path = Path(string)
     assert path.segments == expected
