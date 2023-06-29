@@ -9,6 +9,9 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 `Unreleased`_
 -------------
 
+`0.6.0`_ - 2023-06-29
+---------------------
+
 Added
 ^^^^^
 * Add constructors for URL, Path, Query that accept the parts as arguments
@@ -74,7 +77,8 @@ Added
 * Added a class for a URL
 
 
-.. _`unreleased`: https://github.com/spapanik/pathurl/compare/v0.5.0...main
+.. _`unreleased`: https://github.com/spapanik/pathurl/compare/v0.6.0...main
+.. _`0.6.0`: https://github.com/spapanik/pathurl/compare/v0.5.0...0.6.0
 .. _`0.5.0`: https://github.com/spapanik/pathurl/compare/v0.4.0...0.5.0
 .. _`0.4.0`: https://github.com/spapanik/pathurl/compare/v0.3.0...0.4.0
 .. _`0.3.0`: https://github.com/spapanik/pathurl/compare/v0.2.0...0.3.0
