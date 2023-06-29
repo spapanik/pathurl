@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from typing import List, Union
+from typing import Any, List, Union
 from urllib.parse import parse_qs, urlencode
 
 qs_value = Union[str, List[str]]
@@ -15,7 +15,9 @@ class Query:
         self._string = self._dict_to_str(self._data)
 
     @classmethod
-    def from_dict(cls, dict_: dict[str, qs_value] | None = None, **kwargs: qs_value) -> Query:
+    def from_dict(
+        cls, dict_: dict[str, qs_value] | None = None, **kwargs: qs_value
+    ) -> Query:
         dict_ = dict(dict_ or {}, **kwargs)
         return cls(cls._dict_to_str(dict_))
 
@@ -49,7 +51,7 @@ class Query:
         return parse_qs(string, keep_blank_values=True)
 
     @staticmethod
-    def _dict_to_str(data_: dict[str, list[str]]) -> str:
+    def _dict_to_str(data_: dict[str, Any]) -> str:
         return urlencode(data_, doseq=True)
 
     def get(self, key: str) -> list[str] | None:

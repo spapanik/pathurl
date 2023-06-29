@@ -8,7 +8,9 @@ class Path:
         self._string = string
 
     @classmethod
-    def from_segments(cls, *segments: str, is_dir: bool = False, is_absolute: bool = True) -> Path:
+    def from_segments(
+        cls, *segments: str, is_dir: bool = False, is_absolute: bool = True
+    ) -> Path:
         string = "/".join(segments)
         if is_dir:
             string = f"{string}/"

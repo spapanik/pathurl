@@ -43,8 +43,8 @@ class URL:
         password: str | None = None,
         hostname: str = "",
         port: int | None = None,
-        path: str | Path = Path(),
-        query: str | Query = Query(),
+        path: str | Path = "",
+        query: str | Query = "",
         fragment: str = "",
     ) -> URL:
         netloc = cls._create_netloc(scheme, username, password, hostname, port)
@@ -118,7 +118,12 @@ class URL:
 
     @classmethod
     def _create_netloc(
-        cls, scheme: str, username: str, password: str, hostname: str, port: int
+        cls,
+        scheme: str,
+        username: str | None,
+        password: str | None,
+        hostname: str,
+        port: int | None,
     ) -> str:
         parts = []
         if username or password:
