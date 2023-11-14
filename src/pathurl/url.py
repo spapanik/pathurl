@@ -152,5 +152,9 @@ class URL:
             kwargs.setdefault(part, getattr(self, part))
         return self.from_parts(**kwargs)
 
-    def join(self, path: str | Path) -> URL:
-        return self.__class__(urljoin(str(self), str(path)))
+    def join(self, *paths: str | Path) -> URL:
+        result = str(self)
+        for path in paths:
+            result = result, str(path)
+
+        return self.__class__(result)

@@ -9,6 +9,10 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 `Unreleased`_
 -------------
 
+Added
+^^^^^
+* Allow passing multiple paths in URL.join
+
 `0.6.0`_ - 2023-06-29
 ---------------------
 
