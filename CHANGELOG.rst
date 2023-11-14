@@ -43,7 +43,7 @@ Changed
 
 Removed
 ^^^^^^^
-* Removed changelog from the published wheel
+* Remove changelog from the published wheel
 
 `0.3.0`_ - 2022-01-05
 ---------------------
@@ -59,26 +59,26 @@ Changed
 
 Removed
 ^^^^^^^
-* Removed the default scheme
-* Removed params attribute as it's unused
+* Remove the default scheme
+* Remove params attribute as it's unused
 
 `0.2.0`_ - 2022-01-05
 ---------------------
 
 Added
 ^^^^^
-* Added python310 support
+* Add python310 support
 
 Removed
 ^^^^^^^
-* Dropped python36 support
+* Drop python36 support
 
 `0.1.0`_ - 2021-05-05
 ---------------------
 
 Added
 ^^^^^
-* Added a class for a URL
+* Add a class for a URL
 
 
 .. _`unreleased`: https://github.com/spapanik/pathurl/compare/v0.6.0...main
