@@ -140,6 +140,7 @@ python = "^3.8"
 [tool.poetry.group.dev.dependencies]
 ipdb = { version = "^0.13", python = "^3.9" }
 ipython = { version = "^8.12", python = "^3.9" }
+pickleshare = { version = "^0.7", python = "^3.9" }
 pipdeptree = "^2.7"
 
 [tool.poetry.group.lint.dependencies]
