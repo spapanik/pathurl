@@ -70,7 +70,7 @@ class Query:
                 data[key].append(value)
         return self.__class__(self._dict_to_str(data))
 
-    def set(  # noqa: A003
+    def set(
         self, dict_: dict[str, qs_value] | None = None, **kwargs: qs_value
     ) -> Query:
         data = deepcopy(self._data)

@@ -155,6 +155,6 @@ class URL:
     def join(self, *paths: str | Path) -> URL:
         result = str(self)
         for path in paths:
-            result = result, str(path)
+            result = urljoin(result, str(path))
 
         return self.__class__(result)
