@@ -5,7 +5,7 @@ and add _factorio_ to them.
 
 ```toml
 [tool.poetry.dependencies]
-pathurl = "^0.6"
+pathurl = "^0.7"
 ```
 
 [poetry]: https://python-poetry.org/
