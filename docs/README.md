@@ -8,7 +8,9 @@
 [![build automation: yam][yam_badge]][yam_url]
 [![Lint: ruff][ruff_badge]][ruff_url]
 
-`pathurl` is an objected-oriented way of manipulating URLs.
+`pathurl` is an objected-oriented way of manipulating URLs. It is heavily inspired by
+the improvements that were brought to the standard library by `pathlib` and aims to provide
+a similar interface for URLs.
 
 ## Links
 
