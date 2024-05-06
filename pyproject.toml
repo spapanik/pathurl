@@ -126,7 +126,7 @@ skip_empty = true
 
 [tool.poetry]
 name = "pathurl"
-version = "0.7.0"
+version = "0.7.0.post1"
 description = "url manipulation"
 authors = [
     "Stephanos Kuma <stephanos@kuma.ai>",
