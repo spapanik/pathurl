@@ -16,8 +16,7 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ### Added
 
--   Add constructors for URL, Path, Query that accept the parts as
-    arguments
+-   Add constructors for URL, Path, Query that accept the parts as arguments
 
 ### Removed
 
@@ -27,8 +26,7 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ### Added
 
--   Allow passing a dict in Query methods for keys that cannot be
-    keyword arguments
+-   Allow passing a dict in Query methods for keys that cannot be keyword arguments
 -   Allow replacing parts of a URL
 
 ### Changed
@@ -57,17 +55,17 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 ### Removed
 
 -   Remove the default scheme
--   Remove params attribute as it\'s unused
+-   Remove params attribute as it is unused
 
 ## [0.2.0] - 2022-01-05
 
 ### Added
 
--   Add python310 support
+-   Add python 3.10 support
 
 ### Removed
 
--   Drop python36 support
+-   Drop python 3.6 support
 
 ## [0.1.0] - 2021-05-05
 
