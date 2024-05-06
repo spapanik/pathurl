@@ -5,7 +5,11 @@ repo_url: https://github.com/spapanik/pathurl
 nav:
   - Home: README.md
   - Installation: installation.md
-  - Usage: usage.md
+  - Usage:
+      - usage/index.md
+      - URL: usage/url.md
+      - Path: usage/path.md
+      - Query: usage/query.md
   - About:
       - License: LICENSE.md
       - Changelog: CHANGELOG.md
