@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from typing import Any, List, Union
+from typing import Any, Union
 from urllib.parse import parse_qs, urlencode
 
-qs_value = Union[str, List[str]]
+qs_value = Union[str, list[str]]
 
 
 class Query:
