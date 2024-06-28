@@ -22,7 +22,7 @@ class URL:
         "_fragment",
     )
 
-    def __init__(self, string: str = ""):
+    def __init__(self, string: str = "") -> None:
         parsed_url = urlsplit(string)
         self._string = string
         self._netloc = parsed_url.netloc

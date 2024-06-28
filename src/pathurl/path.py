@@ -4,7 +4,7 @@ from __future__ import annotations
 class Path:
     __slots__ = ("_string",)
 
-    def __init__(self, string: str = ""):
+    def __init__(self, string: str = "") -> None:
         self._string = string
 
     @classmethod
