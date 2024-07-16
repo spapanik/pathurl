@@ -6,7 +6,7 @@ build-backend = "phosphorus.construction.api"
 
 [project]
 name = "pathurl"
-version = "0.7.0.post1"
+version = "0.8.0"
 
 authors = [
     { name = "Stephanos Kuma", email = "stephanos@kuma.ai" },
