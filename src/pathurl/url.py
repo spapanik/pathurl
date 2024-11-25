@@ -10,16 +10,16 @@ from pathurl.query import Query
 
 class URL:
     __slots__ = (
-        "_string",
-        "_netloc",
-        "_scheme",
-        "_username",
-        "_password",
-        "_hostname",
-        "_port",
-        "_path",
-        "_query",
         "_fragment",
+        "_hostname",
+        "_netloc",
+        "_password",
+        "_path",
+        "_port",
+        "_query",
+        "_scheme",
+        "_string",
+        "_username",
     )
 
     def __init__(self, string: str = "") -> None:

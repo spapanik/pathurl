@@ -8,7 +8,7 @@ qs_value = Union[str, list[str]]
 
 
 class Query:
-    __slots__ = ("_string", "_data")
+    __slots__ = ("_data", "_string")
 
     def __init__(self, _string: str = "") -> None:
         self._data = self._str_to_dict(_string)
