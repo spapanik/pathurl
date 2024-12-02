@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from typing import Any, Union
+from typing import TYPE_CHECKING, Union
 from urllib.parse import parse_qs, urlencode
+
+if TYPE_CHECKING:
+    from collections.abc import Mapping
 
 qs_value = Union[str, list[str]]
 
@@ -51,7 +54,7 @@ class Query:
         return parse_qs(string, keep_blank_values=True)
 
     @staticmethod
-    def _dict_to_str(data_: dict[str, Any]) -> str:
+    def _dict_to_str(data_: Mapping[str, object]) -> str:
         return urlencode(data_, doseq=True)
 
     def get(self, key: str) -> list[str] | None:

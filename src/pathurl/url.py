@@ -1,11 +1,13 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import TypeVar, Union
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 from pathurl._constants import Port
 from pathurl.path import Path
 from pathurl.query import Query
+
+_T = TypeVar("_T", bound=Union[int, str, None, Path, Query])
 
 
 class URL:
@@ -28,7 +30,7 @@ class URL:
         self._netloc = parsed_url.netloc
         self._scheme = parsed_url.scheme
         self._username = parsed_url.username
-        self._hostname = parsed_url.hostname
+        self._hostname = parsed_url.hostname or ""
         self._password = parsed_url.password
         self._port = parsed_url.port or self._infer_port(self._scheme)
         self._path = Path(parsed_url.path)
@@ -84,7 +86,7 @@ class URL:
         return self._username
 
     @property
-    def hostname(self) -> str | None:
+    def hostname(self) -> str:
         return self._hostname
 
     @property
@@ -137,20 +139,25 @@ class URL:
             parts.append(f":{port}")
         return "".join(parts)
 
-    def replace(self, **kwargs: Any) -> URL:
-        parts = {
-            "scheme",
-            "username",
-            "password",
-            "hostname",
-            "port",
-            "path",
-            "query",
-            "fragment",
-        }
-        for part in parts:
-            kwargs.setdefault(part, getattr(self, part))
-        return self.from_parts(**kwargs)
+    def replace(self, **kwargs: _T) -> URL:
+        scheme: str = kwargs.get("scheme", self.scheme)  # type: ignore[assignment]
+        username: str | None = kwargs.get("username", self.username)  # type: ignore[assignment]
+        password: str | None = kwargs.get("password", self.password)  # type: ignore[assignment]
+        hostname: str = kwargs.get("hostname", self.hostname)  # type: ignore[assignment]
+        port: int | None = kwargs.get("port", self.port)  # type: ignore[assignment]
+        path: str | Path = kwargs.get("path", self.path)  # type: ignore[assignment]
+        query: str | Query = kwargs.get("query", self.query)  # type: ignore[assignment]
+        fragment: str = kwargs.get("fragment", self.fragment)  # type: ignore[assignment]
+        return self.from_parts(
+            scheme=scheme,
+            username=username,
+            password=password,
+            hostname=hostname,
+            port=port,
+            path=path,
+            query=query,
+            fragment=fragment,
+        )
 
     def join(self, *paths: str | Path) -> URL:
         result = str(self)
