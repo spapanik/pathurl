@@ -26,7 +26,7 @@ a similar interface for URLs.
 [test_badge]: https://github.com/spapanik/pathurl/actions/workflows/tests.yml/badge.svg
 [test_url]: https://github.com/spapanik/pathurl/actions/workflows/tests.yml
 [licence_badge]: https://img.shields.io/pypi/l/pathurl
-[licence_url]: https://github.com/spapanik/pathurl/blob/main/docs/LICENSE.md
+[licence_url]: https://pathurl.readthedocs.io/en/stable/LICENSE/
 [pypi_badge]: https://img.shields.io/pypi/v/pathurl
 [pypi_url]: https://pypi.org/project/pathurl
 [pepy_badge]: https://pepy.tech/badge/pathurl
@@ -38,4 +38,4 @@ a similar interface for URLs.
 [ruff_badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json
 [ruff_url]: https://github.com/charliermarsh/ruff
 [Documentation]: https://pathurl.readthedocs.io/en/stable/
-[Changelog]: https://github.com/spapanik/pathurl/blob/main/docs/CHANGELOG.md
+[Changelog]: https://pathurl.readthedocs.io/en/stable/CHANGELOG/
