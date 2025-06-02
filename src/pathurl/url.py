@@ -1,13 +1,13 @@
 from __future__ import annotations
 
-from typing import TypeVar, Union
+from typing import TypeVar
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 from pathurl._constants import Port
 from pathurl.path import Path
 from pathurl.query import Query
 
-_T = TypeVar("_T", bound=Union[int, str, None, Path, Query])
+_T = TypeVar("_T", bound=int | str | None | Path | Query)
 
 
 class URL:

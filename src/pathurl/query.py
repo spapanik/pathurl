@@ -1,13 +1,13 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from typing import TYPE_CHECKING, Union
+from typing import TYPE_CHECKING
 from urllib.parse import parse_qs, urlencode
 
 if TYPE_CHECKING:
     from collections.abc import Mapping
 
-qs_value = Union[str, list[str]]
+qs_value = str | list[str]
 
 
 class Query:
