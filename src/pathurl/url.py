@@ -1,13 +1,16 @@
 from __future__ import annotations
 
-from typing import TypeVar
+from typing import TYPE_CHECKING
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 from pathurl.lib.constants import Port
 from pathurl.path import Path
 from pathurl.query import Query
 
-_T = TypeVar("_T", bound=int | str | None | Path | Query)
+if TYPE_CHECKING:
+    from typing_extensions import Unpack
+
+    from pathurl.lib.type_defs import URLParts  # upgrade: py3.10: import from typing
 
 
 class URL:
@@ -139,15 +142,15 @@ class URL:
             parts.append(f":{port}")
         return "".join(parts)
 
-    def replace(self, **kwargs: _T) -> URL:
-        scheme: str = kwargs.get("scheme", self.scheme)  # type: ignore[assignment]
-        username: str | None = kwargs.get("username", self.username)  # type: ignore[assignment]
-        password: str | None = kwargs.get("password", self.password)  # type: ignore[assignment]
-        hostname: str = kwargs.get("hostname", self.hostname)  # type: ignore[assignment]
-        port: int | None = kwargs.get("port", self.port)  # type: ignore[assignment]
-        path: str | Path = kwargs.get("path", self.path)  # type: ignore[assignment]
-        query: str | Query = kwargs.get("query", self.query)  # type: ignore[assignment]
-        fragment: str = kwargs.get("fragment", self.fragment)  # type: ignore[assignment]
+    def replace(self, **kwargs: Unpack[URLParts]) -> URL:
+        scheme: str = kwargs.get("scheme", self.scheme)
+        username: str | None = kwargs.get("username", self.username)
+        password: str | None = kwargs.get("password", self.password)
+        hostname: str = kwargs.get("hostname", self.hostname)
+        port: int | None = kwargs.get("port", self.port)
+        path: str | Path = kwargs.get("path", self.path)
+        query: str | Query = kwargs.get("query", self.query)
+        fragment: str = kwargs.get("fragment", self.fragment)
         return self.from_parts(
             scheme=scheme,
             username=username,
