@@ -101,7 +101,7 @@ def test_get(string: str, key: str, expected: list[str] | None) -> None:
 )
 def test_set(string: str, kwargs: dict[str, str], expected: str) -> None:
     query = Query(string)
-    assert query.set(**kwargs).string == expected  # type: ignore[arg-type]
+    assert query.set(**kwargs).string == expected  # type: ignore[arg-type]  # ty: ignore[invalid-argument-type]
 
 
 @pytest.mark.parametrize(
@@ -118,7 +118,7 @@ def test_set(string: str, kwargs: dict[str, str], expected: str) -> None:
 )
 def test_add(string: str, kwargs: dict[str, str], expected: str) -> None:
     query = Query(string)
-    assert query.add(**kwargs).string == expected  # type: ignore[arg-type]
+    assert query.add(**kwargs).string == expected  # type: ignore[arg-type]  # ty: ignore[invalid-argument-type]
 
 
 @pytest.mark.parametrize(
@@ -140,7 +140,7 @@ def test_replace(
     string: str, kwargs: dict[str, tuple[str, str]], expected: str
 ) -> None:
     query = Query(string)
-    assert query.replace(**kwargs).string == expected  # type: ignore[arg-type]
+    assert query.replace(**kwargs).string == expected  # type: ignore[arg-type]  # ty: ignore[invalid-argument-type]
 
 
 @pytest.mark.parametrize(
