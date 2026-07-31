@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Unpack
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 from pathurl.lib.constants import Port
@@ -8,9 +8,7 @@ from pathurl.path import Path
 from pathurl.query import Query
 
 if TYPE_CHECKING:
-    from typing_extensions import Unpack
-
-    from pathurl.lib.type_defs import URLParts  # upgrade: py3.10: import from typing
+    from pathurl.lib.type_defs import URLParts
 
 
 class URL:
